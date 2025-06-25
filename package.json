@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "bin": {
     "hctoolkit-uniapp-version-updater": "bin/uniapp-version-updater.js",
+    "hctoolkit-uniapp-publicpath-updater": "bin/uniapp-publicpath-updater.js",
     "hctoolkit-mp-alipay-uploader": "bin/mp-alipay-uploader.js",
     "hctoolkit-uniapp-mp-alipay-dev-helper": "bin/uniapp-mp-alipay-dev-helper.js",
     "hctoolkit-mp-weixin-uploader": "bin/mp-weixin-uploader.js",
@@ -51,4 +52,4 @@
   "publishConfig": {
     "access": "public"
   }
-} 
+}
