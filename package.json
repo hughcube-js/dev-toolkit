@@ -4,8 +4,7 @@
   "description": "一套完整的开发工具集，包含小程序版本管理、代码上传、开发配置等功能",
   "main": "lib/index.js",
   "bin": {
-    "hctoolkit-uniapp-version-updater": "bin/uniapp-version-updater.js",
-    "hctoolkit-uniapp-publicpath-updater": "bin/uniapp-publicpath-updater.js",
+    "hctoolkit-uniapp-manifest-updater": "bin/uniapp-manifest-updater.js",
     "hctoolkit-mp-alipay-uploader": "bin/mp-alipay-uploader.js",
     "hctoolkit-uniapp-mp-alipay-dev-helper": "bin/uniapp-mp-alipay-dev-helper.js",
     "hctoolkit-mp-weixin-uploader": "bin/mp-weixin-uploader.js",
@@ -36,7 +35,9 @@
     "url": "https://github.com/hughcube-js/dev-toolkit/issues"
   },
   "homepage": "https://github.com/hughcube-js/dev-toolkit#readme",
-  "dependencies": {},
+  "dependencies": {
+    "json5": "^2.2.3"
+  },
   "peerDependencies": {
     "minidev": "*",
     "miniprogram-ci": "*"

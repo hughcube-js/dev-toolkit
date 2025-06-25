@@ -2,5 +2,10 @@
 
 const UniappMpAlipayDevHelper = require('../lib/uniapp-mp-alipay-dev-helper')
 
-const helper = new UniappMpAlipayDevHelper()
-helper.run() 
+try {
+    const helper = new UniappMpAlipayDevHelper()
+    helper.run()
+} catch (error) {
+    console.error('❌ 执行失败:', error.message)
+    process.exit(1)
+} 
