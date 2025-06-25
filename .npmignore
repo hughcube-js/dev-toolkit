@@ -1,0 +1,43 @@
+# Source files not needed in npm package
+src/
+test/
+__tests__/
+*.test.js
+*.spec.js
+
+# Config files
+.gitignore
+.eslintrc*
+.prettierrc*
+tsconfig.json
+jest.config.js
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage
+coverage/
+.nyc_output
+
+# Original script files (已移动到bin和lib目录)
+*.js 
