@@ -1,3 +1,6 @@
 #!/usr/bin/env node
 
-require('../lib/uniapp-version-updater'); 
+const UniappVersionUpdater = require('../lib/uniapp-version-updater')
+
+const updater = new UniappVersionUpdater()
+updater.run() 

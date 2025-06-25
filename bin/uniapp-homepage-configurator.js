@@ -1,3 +1,6 @@
 #!/usr/bin/env node
 
-require('../lib/uniapp-homepage-configurator'); 
+const UniappHomepageConfigurator = require('../lib/uniapp-homepage-configurator')
+
+const configurator = new UniappHomepageConfigurator()
+configurator.run() 
