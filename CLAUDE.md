@@ -1,0 +1,75 @@
+# CLAUDE.md
+
+本文件为 Claude Code (claude.ai/code) 在此仓库中工作提供指导。
+
+**重要提示：与此项目相关的所有沟通请永远使用中文。**
+
+## 项目概述
+
+这是 `@hughcube/dev-toolkit`，一个为 UniApp 和小程序开发提供的综合开发工具包，专注于微信和支付宝小程序的版本管理、代码上传和开发配置。
+
+## 关键命令
+
+### 开发命令
+- `npm run prepare` - 运行准备脚本 (scripts/prepare.js)
+- `node scripts/prepare.js` - 准备开发环境
+
+### 测试
+- 未配置测试框架（package.json 中显示占位符测试脚本）
+- 项目使用对等依赖 `minidev` 和 `miniprogram-ci`
+
+### 可用的 CLI 工具
+项目安装后提供 5 个 CLI 工具：
+- `hctoolkit-uniapp-manifest-updater` - 更新 UniApp manifest.json 版本信息
+- `hctoolkit-mp-alipay-uploader` - 上传到支付宝小程序平台
+- `hctoolkit-mp-weixin-uploader` - 上传到微信小程序平台
+- `hctoolkit-uniapp-mp-alipay-dev-helper` - 生成支付宝开发配置，支持页面导出
+- `hctoolkit-uniapp-homepage-configurator` - 配置小程序首页
+
+## 架构
+
+### 核心结构
+- `lib/` - 核心实现模块
+  - `index.js` - 导出所有类的主入口点
+  - `uniapp-manifest-updater.js` - UniApp manifest.json 版本管理
+  - `mp-alipay-uploader.js` - 支付宝小程序上传器
+  - `mp-weixin-uploader.js` - 微信小程序上传器
+  - `uniapp-mp-alipay-dev-helper.js` - 支付宝开发助手
+  - `uniapp-homepage-configurator.js` - 首页配置工具
+
+- `bin/` - 封装 lib 类的 CLI 可执行脚本
+- `scripts/` - 构建和准备脚本
+
+### 关键设计模式
+- 每个 CLI 工具遵循相同模式：bin 脚本创建类实例并调用 run()
+- 所有 CLI 工具支持环境变量作为命令行参数的替代方案
+- 统一的错误处理，使用 process.on('uncaughtException') 和 process.on('unhandledRejection')
+- 使用 JSON5 解析 manifest.json 文件以支持注释和尾随逗号
+
+### 依赖关系
+- `json5` - 用于解析支持注释的 UniApp manifest.json
+- 对等依赖：`minidev`（支付宝），`miniprogram-ci`（微信）
+- 需要 Node.js >= 14.0.0
+
+### 环境变量
+工具支持带前缀的环境变量：
+- `ALIMP_*` 用于支付宝小程序设置
+- `WXMP_*` 用于微信小程序设置
+
+优先级：CLI 参数 > 环境变量 > 默认值
+
+## 常见工作流程
+
+### 版本管理
+manifest 更新器与 UniApp 的 `src/manifest.json` 文件配合工作，更新版本号并将其转换为小程序的版本代码。
+
+### 小程序上传
+支付宝和微信上传器都需要：
+- 构建的分发目录
+- 平台特定的认证（私钥/配置文件）
+- App ID 和版本信息
+
+### 开发配置
+工具自动生成平台特定的配置文件，并可以在开发过程中监视变化。
+
+支付宝开发助手（`--dump-pages` 标志）可以读取 `src/pages.json` 并生成包含所有页面配置的 `compileMode.json` 文件以便于开发。它从 `navigationBarTitleText` 提取页面标题并创建带有 "(helper)" 后缀的助手条目。

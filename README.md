@@ -7,7 +7,7 @@
 - **UniApp版本管理**: 自动更新manifest.json中的版本号和版本代码
 - **支付宝小程序上传**: 使用minidev自动上传代码到支付宝开放平台
 - **微信小程序上传**: 使用miniprogram-ci自动上传代码到微信公众平台
-- **UniApp支付宝开发助手**: 自动生成支付宝小程序开发配置文件
+- **UniApp支付宝开发助手**: 自动生成支付宝小程序开发配置文件，支持导出页面配置
 - **UniApp首页配置器**: 根据AppID自动配置小程序启动首页
 - **跨平台支持**: 支持Windows、macOS、Linux
 - **环境变量支持**: 支持通过环境变量配置参数
@@ -76,6 +76,9 @@ hctoolkit-uniapp-mp-alipay-dev-helper --mode dev --watch
 
 # 构建模式
 hctoolkit-uniapp-mp-alipay-dev-helper --mode build
+
+# 导出页面配置到compileMode.json
+hctoolkit-uniapp-mp-alipay-dev-helper --mode dev --dump-pages --watch
 ```
 
 ### 5. UniApp首页配置器 `hctoolkit-uniapp-homepage-configurator`
