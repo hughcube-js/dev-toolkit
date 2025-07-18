@@ -5,7 +5,9 @@
       "Bash(git commit:*)",
       "Bash(git tag:*)",
       "Bash(git push:*)",
-      "Bash(npm publish:*)"
+      "Bash(npm publish:*)",
+      "Bash(node:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }
