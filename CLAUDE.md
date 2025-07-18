@@ -73,3 +73,35 @@ manifest 更新器与 UniApp 的 `src/manifest.json` 文件配合工作，更新
 工具自动生成平台特定的配置文件，并可以在开发过程中监视变化。
 
 支付宝开发助手（`--dump-pages` 标志）可以读取 `src/pages.json` 并生成包含所有页面配置的 `compileMode.json` 文件以便于开发。它从 `navigationBarTitleText` 提取页面标题并创建带有 "(helper)" 后缀的助手条目。
+
+## NPM 发布流程
+
+当需要发布新版本到 npm 时，请按以下步骤操作：
+
+1. **修改版本号**：更新 `package.json` 中的 `version` 字段
+2. **提交更改**：将所有更改提交到 git
+3. **创建标签**：创建新的 git tag 并推送到远程仓库
+4. **发布到 npm**：执行 `npm publish` 命令
+
+### 具体命令示例：
+
+```bash
+# 1. 修改 package.json 版本号（手动编辑）
+# 2. 提交更改
+git add .
+git commit -m "版本更新: 更新到 vX.X.X"
+
+# 3. 创建标签并推送
+git tag vX.X.X
+git push origin master
+git push origin vX.X.X
+
+# 4. 发布到 npm
+npm publish
+```
+
+### 注意事项：
+- 确保版本号遵循语义化版本规范 (SemVer)
+- 提交信息应该清晰描述更改内容
+- 标签名称应该与 package.json 中的版本号保持一致
+- 发布前确保代码已经过充分测试
